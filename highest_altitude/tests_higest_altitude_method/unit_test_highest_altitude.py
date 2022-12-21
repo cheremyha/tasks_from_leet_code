@@ -24,6 +24,8 @@ class TestsMaxAltitudeMethod(unittest.TestCase):
         self.gain_list_second = [-5, 1, 5, 0, -7]
         # Set second gain list with one broken second element.
         self.gain_list_broken = [-5, '1', 5, 0, -7]
+        # Set empty gain.
+        self.gain_list_empty = []
 
     def test_max_altitude_on_leet_code_gains(self):
         """
@@ -48,7 +50,7 @@ class TestsMaxAltitudeMethod(unittest.TestCase):
         # Check right borderline case for gain_list_second.
         self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_list_second), 2)
 
-    def test_binary_search_for_not_sorted_list(self):
+    def test_max_altitude_on_broken_gains(self):
         """
         max_altitude must be raised an exception if
         in put gain_list_second consist not from int
@@ -57,6 +59,15 @@ class TestsMaxAltitudeMethod(unittest.TestCase):
         with self.assertRaises(TypeError):
             # Call the max_altitude method, we must get TypeError.
             self.solution_entity.max_altitude(gain=self.gain_list_broken)
+
+    def test_max_altitude_on_empty_gains(self):
+        """
+        max_altitude must be raised an exception if
+        in put gain_list_second is empty.
+        """
+        with self.assertRaises(ValueError):
+            # Call the max_altitude method, we must get ValueError.
+            self.solution_entity.max_altitude(gain=self.gain_list_empty)
 
 
 if __name__ == '__main__':
