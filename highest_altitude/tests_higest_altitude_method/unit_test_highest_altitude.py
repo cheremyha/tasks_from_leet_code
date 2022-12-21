@@ -26,6 +26,10 @@ class TestsMaxAltitudeMethod(unittest.TestCase):
         self.gain_list_broken = [-5, '1', 5, 0, -7]
         # Set empty gain.
         self.gain_list_empty = []
+        # Set again with the same positive elements.
+        self.gain_same_positive = [1, 1, 1, 1, 1]
+        # Set again with the same negative elements.
+        self.gain_same_negative = [-1, -1, -1, -1, -1]
 
     def test_max_altitude_on_leet_code_gains(self):
         """
@@ -43,6 +47,7 @@ class TestsMaxAltitudeMethod(unittest.TestCase):
         self.assertEqual(self.solution_entity.max_altitude(gain=self.gain_list_first), 0)
         # Check right borderline case for gain_list_first.
         self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_list_first), 1)
+
         # Check left borderline case for gain_list_second.
         self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_list_second), 0)
         # Check true value for gain_list_second.
@@ -68,6 +73,32 @@ class TestsMaxAltitudeMethod(unittest.TestCase):
         with self.assertRaises(ValueError):
             # Call the max_altitude method, we must get ValueError.
             self.solution_entity.max_altitude(gain=self.gain_list_empty)
+
+    def test_max_altitude_on_same_elements(self):
+        """
+        This unit tests check max_altitude method on
+        two gains with consist from the same values.
+        The first gain consist from the same positive values.
+        And the second gain consist from the same negative values.
+        We check method on one true values and
+        two borderline values for everyone.
+        For example for 5 value two borderline values
+        are 4 and 6.
+        """
+
+        # Check left borderline case for gain_list with the same positive elements.
+        self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_list_first), 4)
+        # Check true value for gain_list with the same positive elements.
+        self.assertEqual(self.solution_entity.max_altitude(gain=self.gain_same_positive), 5)
+        # Check right borderline case for gain_list with the same positive elements.
+        self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_list_first), 6)
+
+        # Check left borderline case for gain_list with the same negative elements.
+        self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_same_negative), 1)
+        # Check true value for gain_list with the same negative elements.
+        self.assertEqual(self.solution_entity.max_altitude(gain=self.gain_same_negative), 0)
+        # Check right borderline case for gain_list with the same negative elements.
+        self.assertNotEqual(self.solution_entity.max_altitude(gain=self.gain_same_negative), 1)
 
 
 if __name__ == '__main__':
