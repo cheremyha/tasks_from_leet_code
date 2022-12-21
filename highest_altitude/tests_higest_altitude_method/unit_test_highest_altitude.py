@@ -1,5 +1,5 @@
 """
-This code implements unit tests for max_altitude method.
+ This code implements unit tests for max_altitude method.
 """
 
 import unittest
