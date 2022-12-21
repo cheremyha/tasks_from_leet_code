@@ -1,8 +1,6 @@
 """
 This code implements unit tests for max_altitude method.
-Unit test consist of (???) test.
 """
-
 
 import unittest
 from highest_altitude.highest_altitude import Solution
